@@ -1,0 +1,51 @@
+{
+  "name": "order-api",
+  "version": "1.0.0",
+  "description": "This is ann order management system",
+  "main": "./dist/server.js",
+  "scripts": {
+    "build": "yarn clean && tsc",
+    "clean": "rimraf dist && rimraf reports",
+    "lint": "tslint ./src/**/*.ts ./test/**/*.test.ts",
+    "lint:fix": "tslint --fix ./src/**/*.ts ./test/**/*.test.ts -t verbose",
+    "pretest": "cross-env NODE_ENV=test yarn build && yarn lint",
+    "test": "cross-env NODE_ENV=test && yarn jest-test --coverage",
+    "jest-test": "jest",
+    "test:mutation": "stryker run",
+    "stryker:init": "stryker init",
+    "dev": "cross-env PORT=3000 NODE_ENV=dev ts-node ./src/server.ts",
+    "prod": "PORT=3000 yarn build && yarn start",
+    "tsc": "tsc"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "devDependencies": {
+    "@stryker-mutator/core": "^2.0.2",
+    "@stryker-mutator/html-reporter": "^2.0.2",
+    "@stryker-mutator/jest-runner": "^2.0.2",
+    "@stryker-mutator/typescript": "^2.0.2",
+    "@types/body-parser": "^1.17.0",
+    "@types/express": "^4.16.0",
+    "@types/jest": "^24.0.16",
+    "@types/node": "^10.12.12",
+    "cross-env": "^5.2.0",
+    "jest": "^24.8.0",
+    "rimraf": "^2.6.2",
+    "stryker": "^0.33.1",
+    "stryker-api": "^0.22.0",
+    "stryker-html-reporter": "^0.16.9",
+    "stryker-typescript": "^0.16.1",
+    "ts-jest": "^24.0.2",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.17.0",
+    "typescript": "^3.5.3"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4"
+  },
+  "author": "James Kinyua Njuguna",
+  "license": "MIT"
+}
