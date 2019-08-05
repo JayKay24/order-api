@@ -1,24 +1,32 @@
 {
   "name": "order-api",
   "version": "1.0.0",
-  "description": "This is ann order management system",
+  "description": "This is the example from the Book Hands on RESTful APIs with TypeScript 3",
   "main": "./dist/server.js",
   "scripts": {
-    "build": "yarn clean && tsc",
+    "build": "npm run clean && tsc",
     "clean": "rimraf dist && rimraf reports",
     "lint": "tslint ./src/**/*.ts ./test/**/*.spec.ts",
     "lint:fix": "tslint --fix ./src/**/*.ts ./test/**/*.spec.ts -t verbose",
-    "pretest": "cross-env NODE_ENV=test yarn build && yarn lint",
+    "pretest": "cross-env NODE_ENV=test npm run build && npm run lint",
     "test": "cross-env NODE_ENV=test mocha --reporter spec --compilers ts:ts-node/register test/**/*.spec.ts ",
     "test:mutation": "stryker run",
     "stryker:init": "stryker init",
     "dev": "cross-env PORT=3000 NODE_ENV=dev ts-node ./src/server.ts",
-    "prod": "PORT=3000 yarn build && yarn start",
+    "prod": "PORT=3000 npm run build && npm run start",
     "tsc": "tsc"
   },
   "engines": {
     "node": ">=8.0.0"
   },
+  "keywords": [
+    "order POC",
+    "Hands on RESTful APIs with TypeScript 3",
+    "TypeScript 3",
+    "Packt Books"
+  ],
+  "author": "James Kinyua Njuguna",
+  "license": "MIT",
   "devDependencies": {
     "@types/body-parser": "^1.17.0",
     "@types/chai": "^4.1.7",
@@ -43,9 +51,9 @@
   },
   "dependencies": {
     "body-parser": "^1.18.3",
+    "express": "^4.16.4",
     "chai-http": "^4.2.1",
-    "express": "^4.16.4"
-  },
-  "author": "James Kinyua Njuguna",
-  "license": "MIT"
+    "js2xmlparser": "^3.0.0",
+    "lodash": "^4.17.11"
+  }
 }
