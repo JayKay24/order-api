@@ -2,3 +2,4 @@
 **/dist/
 **/.stryker-tmp/
 **/reports/
+**/.vscode/
