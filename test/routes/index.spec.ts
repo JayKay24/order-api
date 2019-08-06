@@ -1,12 +1,11 @@
 'use strict'
 
-import * as chai from 'chai';
-import chaiHttp = require('chai-http');
-import 'mocha';
-import app from '../../src/app';
+import chai = require('chai')
+import chaiHttp = require('chai-http')
+import 'mocha'
+import app from '../../src/app'
 
-chai.use(chaiHttp);
-
+chai.use(chaiHttp)
 
 const expect = chai.expect
 
@@ -15,7 +14,7 @@ describe('baseRoute', () => {
     return chai
       .request(app)
       .get('/index')
-      .then((res: any) => {
+      .then(res => {
         expect(res.status).to.be.equal(200)
       })
   })
@@ -23,7 +22,7 @@ describe('baseRoute', () => {
     return chai
       .request(app)
       .get('/index')
-      .then((res: any) => {
+      .then(res => {
         expect(res.body.status).to.be.equal('success')
       })
   })
