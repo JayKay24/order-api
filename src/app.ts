@@ -1,5 +1,5 @@
 import * as bodyParser from 'body-parser';
-import * as express from 'express';
+import express from 'express';
 import { Index } from './routes/index';
 
 class App {
@@ -7,8 +7,8 @@ class App {
   public indexRoutes: Index = new Index();
 
   constructor() {
-    this.app = express.default();
-    this.app.use(bodyParser.json);
+    this.app = express();
+    this.app.use(bodyParser.json());
     this.indexRoutes.routes(this.app);
   }
 }

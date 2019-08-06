@@ -12,7 +12,7 @@ module.exports = function(config) {
     mutator: 'typescript',
     transpilers: [],
     reporters: ['html', 'progress', 'dashboard'],
-    packageManager: 'npm',
+    packageManager: 'yarn',
     testFramework: 'mocha',
     coverageAnalysis: 'off',
     tsconfigFile: 'tsconfig.json',
