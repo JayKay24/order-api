@@ -1,22 +1,22 @@
-import * as bodyParser from 'body-parser'
-import express from 'express'
+import * as bodyParser from 'body-parser';
+import express from 'express';
 import { APIRoute } from './routes/api';
 import { OrderRoute } from './routes/order';
 import { UserRoute } from './routes/user';
 
 class App {
-  public app: express.Application
-  public apiRoutes: APIRoute = new APIRoute()
-  public orderRoutes: OrderRoute = new OrderRoute()
-  public userRoutes: UserRoute = new UserRoute()
+  public app: express.Application;
+  public apiRoutes: APIRoute = new APIRoute();
+  public orderRoutes: OrderRoute = new OrderRoute();
+  public userRoutes: UserRoute = new UserRoute();
 
   constructor() {
-    this.app = express()
-    this.app.use(bodyParser.json())
-    this.apiRoutes.routes(this.app)
-    this.orderRoutes.routes(this.app)
-    this.userRoutes.routes(this.app)
+    this.app = express();
+    this.app.use(bodyParser.json());
+    this.apiRoutes.routes(this.app);
+    this.orderRoutes.routes(this.app);
+    this.userRoutes.routes(this.app);
   }
 }
 
-export default new App().app
+export default new App().app;
