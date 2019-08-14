@@ -1,5 +1,4 @@
 import { NextFunction, Request, Response } from 'express';
-import { ApplicationType } from '../models/applicationType';
 import { default as User } from '../models/User';
 import { formatOutput } from '../utility/orderApiUtility';
 
@@ -13,7 +12,7 @@ export let getUser = (req: Request, res: Response, next: NextFunction) => {
   const user = users.find(obj => obj.username === username);
   const httpStatusCode = user ? 200 : 404;
 
-  formatOutput(res, user, httpStatusCode, ApplicationType.JSON);
+  formatOutput(res, user, httpStatusCode);
 };
 
 export let addUser = (req: Request, res: Response, next: NextFunction) => {
@@ -30,7 +29,7 @@ export let addUser = (req: Request, res: Response, next: NextFunction) => {
   };
   users.push(user);
   
-  formatOutput(res, user, 201, ApplicationType.JSON);
+  formatOutput(res, user, 201);
 };
 
 export let updateUser = (req: Request, res: Response, next: NextFunction) => {
@@ -52,7 +51,7 @@ export let updateUser = (req: Request, res: Response, next: NextFunction) => {
 
   users[userIndex] = user;
   
-  formatOutput(res, {}, 204, ApplicationType.JSON);
+  formatOutput(res, {}, 204);
 };
 
 export let removeUser = (req: Request, res: Response, next: NextFunction) => {
@@ -65,5 +64,5 @@ export let removeUser = (req: Request, res: Response, next: NextFunction) => {
 
   users = users.filter(item => item.username !== username);
 
-  formatOutput(res, {}, 204, ApplicationType.JSON);
+  formatOutput(res, {}, 204);
 };
