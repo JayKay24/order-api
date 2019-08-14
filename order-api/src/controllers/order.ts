@@ -1,6 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
 import * as _ from 'lodash';
-import { ApplicationType } from '../models/applicationType';
 import { default as Order } from '../models/order';
 import { OrderStatus } from '../models/orderStatus';
 import { formatOutput } from '../utility/orderApiUtility';
@@ -14,7 +13,7 @@ export let getOrder = (req: Request, res: Response, next: NextFunction) => {
   const order = orders.find(obj => obj.id === Number(id));
   const httpStatusCode = order ? 200 : 404;
 
-  formatOutput(res, order, httpStatusCode, ApplicationType.JSON);
+  formatOutput(res, order, httpStatusCode, 'order');
 };
 
 export let getAllOrders = (req: Request, res: Response, next: NextFunction) => {
@@ -23,7 +22,7 @@ export let getAllOrders = (req: Request, res: Response, next: NextFunction) => {
   const dropped = _.drop(orders, offset);
   const take = _.take(dropped, limit);
   const filteredOrders = take;
-  formatOutput(res, filteredOrders, 200, ApplicationType.JSON);
+  formatOutput(res, filteredOrders, 200, 'order');
 };
 
 export let addOrder = (req: Request, res: Response, next: NextFunction) => {
@@ -38,7 +37,7 @@ export let addOrder = (req: Request, res: Response, next: NextFunction) => {
   };
   orders.push(order);
 
-  formatOutput(res, order, 201, ApplicationType.JSON);
+  formatOutput(res, order, 201, 'order');
 };
 
 export let removeOrder = (req: Request, res: Response, next: NextFunction) => {
@@ -51,7 +50,7 @@ export let removeOrder = (req: Request, res: Response, next: NextFunction) => {
 
   orders = orders.filter(item => item.id !== id);
 
-  formatOutput(res, {}, 204, ApplicationType.JSON);
+  formatOutput(res, {}, 204);
 };
 
 export let getInventory = (req: Request, res: Response, next: NextFunction) => {
@@ -62,15 +61,6 @@ export let getInventory = (req: Request, res: Response, next: NextFunction) => {
   }
 
   const grouppedOrders = _.groupBy(inventoryOrders, 'userId');
-  // return res.status(200).send(grouppedOrders);
-  // return res.format({
-  //   json: () => {
-  //     res.type(APPLICATION_JSON);
-  //     res.status(200).send(grouppedOrders);
-  //   },
-  //   default: () => {
-  //     res.status(406).send();
-  //   },
-  // });
-  formatOutput(res, grouppedOrders, 200, ApplicationType.JSON)
+  
+  formatOutput(res, grouppedOrders, 200, 'inventory');
 };
