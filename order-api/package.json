@@ -9,7 +9,7 @@
     "lint": "tslint ./src/**/*.ts ./test/**/*.spec.ts",
     "lint:fix": "tslint --fix ./src/**/*.ts ./test/**/*.spec.ts -t verbose",
     "pretest": "cross-env NODE_ENV=test yarn run build && yarn run lint",
-    "test": "cross-env NODE_ENV=test mocha --reporter spec --compilers ts:ts-node/register test/**/*.spec.ts ",
+    "test": "cross-env NODE_ENV=test mocha --reporter spec --compilers ts:ts-node/register test/**/*.spec.ts --exit ",
     "test:mutation": "stryker run",
     "stryker:init": "stryker init",
     "dev": "cross-env PORT=3000 NODE_ENV=dev ts-node ./src/server.ts",
@@ -33,6 +33,8 @@
     "@types/chai-http": "^3.0.5",
     "@types/express": "^4.16.0",
     "@types/mocha": "^5.2.5",
+    "@types/mongodb": "^3.1.17",
+    "@types/mongoose": "^5.3.5",
     "@types/node": "^10.12.12",
     "chai": "^4.2.0",
     "cross-env": "^5.2.0",
@@ -55,6 +57,7 @@
     "chai-http": "^4.3.0",
     "express": "^4.16.4",
     "halson": "^3.0.0",
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.15",
+    "mongoose": "^5.4.0"
   }
 }
