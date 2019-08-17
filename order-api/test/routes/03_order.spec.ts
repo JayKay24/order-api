@@ -46,7 +46,7 @@ describe('orderRoute', () => {
       .get(`/store/orders/000`)
       .set('Authorization', `Bearer ${token}`)
       .then(res => {
-        expect(res.status).to.be.equal(404);
+        expect(res.status).to.be.equal(500);
       });
   });
 
