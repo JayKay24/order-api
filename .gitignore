@@ -4,3 +4,4 @@
 **/reports/
 **/.vscode/
 *.pem
+*.log
