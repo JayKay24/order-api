@@ -3,3 +3,4 @@
 **/.stryker-tmp/
 **/reports/
 **/.vscode/
+*.pem
